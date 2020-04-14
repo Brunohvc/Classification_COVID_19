@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="form-group col-sm-4">
+        <label>Tipo</label>
+        <ng-select [items]="inputTypes" bindLabel="name" bindValue="id" [(ngModel)]="selectedType"
+            (change)="changeValue($event)">
+        </ng-select>
+    </div>
+
+    <div class="form-group col-sm-4">
+        <label>Nome do Campo</label>
+        <input type="text" class="form-control" placeholder="Nome do campo" [(ngModel)]="nameInput">
+    </div>
+</div>
+
+<div class="row" *ngIf="selectedType == 'numeric'" style="margin-bottom: 10px;">
+    <div class="form-group col-sm-12" *ngIf="!addingCondition">
+        <button class="btn btn-primary" (click)="addCondition()">Adicionar Condição</button>
+    </div>
+
+    <div class="form-group col-sm-12" *ngIf="!addingCondition">
+        <table class="table">
+            <thead>
+                <th>Risco</th>
+                <th>Tipo</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let condition of numericConditions">
+                    <td>
+                        {{getConditionRisk(condition.risk)}}
+                    </td>
+                    <td>
+                        {{getConditionType(condition)}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-group col-sm-3" *ngIf="addingCondition">
+        <label>Tipo Risco</label>
+        <ng-select [items]="riskTypes" bindLabel="name" bindValue="id" [(ngModel)]="riskTypeSelected"
+            (change)="changeValue($event)">
+        </ng-select>
+    </div>
+
+    <div class="form-group col-sm-3" *ngIf="addingCondition">
+        <label>Condição</label>
+        <ng-select [items]="conditionTypes" bindLabel="name" bindValue="id" [(ngModel)]="conditionTypeSelected"
+            (change)="changeValue($event)">
+        </ng-select>
+    </div>
+
+    <div class="form-group col-sm-3"
+        *ngIf="addingCondition && (conditionTypeSelected == 'MA' || conditionTypeSelected == 'ME')">
+        <label>Valor</label>
+        <input type="number" class="form-control" placeholder="Valor" [(ngModel)]="conditionValue">
+    </div>
+
+    <div class="form-group col-sm-3" *ngIf="addingCondition && conditionTypeSelected == 'EN'">
+        <label>Valor Mínimo</label>
+        <input type="number" class="form-control" placeholder="Valor Mínimo" [(ngModel)]="conditionValueMin">
+    </div>
+
+    <div class="form-group col-sm-3" *ngIf="addingCondition && conditionTypeSelected == 'EN'">
+        <label>Valor Máximo</label>
+        <input type="number" class="form-control" placeholder="Valor Máximo" [(ngModel)]="conditionValueMax">
+    </div>
+
+    <div class="form-group col-sm-12" *ngIf="addingCondition">
+        <button class="btn btn-primary" (click)="saveCondition()">Salvar Condição</button>
+        <button class="btn btn-primary" (click)="cancelCondition()">Cancelar</button>
+    </div>
+</div>
+
+<div class="row" *ngIf="selectedType == 'checkbox'">
+    <div class="form-group col-sm-4">
+        <label>Marcado</label>
+        <ng-select [items]="checkedValues" bindLabel="name" bindValue="id" [(ngModel)]="checkedValue"
+            (change)="changeValue($event)">
+        </ng-select>
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Desmarcado</label>
+        <ng-select [items]="unCheckedValues" bindLabel="name" bindValue="id" [(ngModel)]="unCheckedValue"
+            (change)="changeValue($event)">
+        </ng-select>
+    </div>
+</div>
+
+
+
+<button class="btn btn-primary" (click)="setInput()">Adicionar</button>
+<button class="btn btn-primary" (click)="cancelInput()">Cancelar</button>
