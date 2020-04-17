@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageFunctions } from '../utils/storage';
 
 @Component({
   selector: 'app-engine',
@@ -7,13 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EngineComponent implements OnInit {
 
-  constructor() { }
+  constructor(private storage: StorageFunctions) { }
 
   engine = [];
   addNewInput = false;
 
   ngOnInit(): void {
-    //this.setDefaultEngine();
+    const storageEngine = this.storage.getEngine();
+
+    if (storageEngine && storageEngine.length > 0) {
+      this.engine = storageEngine;
+    }
+  }
+
+  saveEngine() {
+    this.storage.setEngine(this.engine);
   }
 
   addInput() {
@@ -29,6 +38,10 @@ export class EngineComponent implements OnInit {
     this.addNewInput = false;
   }
 
+  deleteInput(indexItem) {
+    this.engine.splice(indexItem, 1);
+  }
+
   setDefaultEngine() {
     // Values To table: G --> Green == Y --> Yellow == O --> Orange == R --> Red
     this.engine = [
@@ -36,7 +49,7 @@ export class EngineComponent implements OnInit {
       { type: 'comorbidities', name: 'Hipertensão Arterial' },
       { type: 'comorbidities', name: 'Diabetes Mellitus' },
       { type: 'comorbidities', name: 'Coronariopatia' },
-      { type: 'comorbidities', name: 'Imunossupresssão' },
+      { type: 'comorbidities', name: 'Imunossupressão' },
       { type: 'comorbidities', name: 'Doença Pulmonar Crônica' },
       { type: 'comorbidities', name: 'Gestação' },
       {

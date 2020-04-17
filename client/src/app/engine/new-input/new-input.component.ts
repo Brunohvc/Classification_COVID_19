@@ -50,11 +50,9 @@ export class NewInputComponent implements OnInit {
     ];
 
   ngOnInit(): void {
-    console.log(this.selectedType);
   }
 
   changeValue($event) {
-    console.log($event);
   }
 
   setInput() {
@@ -125,8 +123,6 @@ export class NewInputComponent implements OnInit {
       || this.conditionTypeSelected === 'MEI') {
       condition.value = this.conditionValue;
     }
-
-    console.log('add Condition: ', condition);
 
     this.numericConditions.push(condition);
     this.addingCondition = false;

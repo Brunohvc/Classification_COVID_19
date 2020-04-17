@@ -51,7 +51,11 @@ p {
 }
 
 .content {
-    margin        : 82px auto 32px;
-    padding       : 0 16px;
+    margin : 82px auto 32px;
+    padding: 0 16px;
 }
 
+span>a {
+    margin-left: 10px;
+    color      : white;
+}

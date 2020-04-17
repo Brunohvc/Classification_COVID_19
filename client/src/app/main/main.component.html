@@ -1,1 +1,36 @@
-<p>main works!</p>
+<h1 class="title">Home</h1>
+
+<div *ngIf="engine && engine.length > 0; else elseBlock">
+    <br />
+    <h3>
+        Sua pontuação Ficou em: {{score}}
+        <span class="message"
+            [ngClass]="getClassTextPerScore(score)">{{getTextPerScore(score)}}</span></h3>
+    <div class="row">
+        <div class="form-group col-sm-3" *ngFor="let item of engineInputs;let indexItem=index;">
+
+            <label>{{item.name}}</label>
+            <input *ngIf="item.type == 'numeric';" type="number" class="form-control" placeholder="{{item.name}}"
+                [(ngModel)]="engine[item.engineIndex].value" (change)="calcPoints()" (keyup)="calcPoints()">
+
+
+            <input *ngIf="item.type == 'checkbox';" type="checkbox" class="form-control"
+                [(ngModel)]="engine[item.engineIndex].value" (change)="calcPoints()">
+
+        </div>
+    </div>
+    <h4>Comorbidades</h4>
+    <div class="row">
+        <div class="form-check col-sm-3" *ngFor="let item of engineComorbidities;let indexItem=index;">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="engine[item.engineIndex].value"
+                (change)="calcPoints()">
+            <label class="form-check-label">{{item.name}}</label>
+        </div>
+    </div>
+</div>
+
+<ng-template #elseBlock>
+    <h2>Não há um motor configurado!</h2>
+    <br />
+    <span class="btn btn-primary"><a routerLink="/engine" routerLinkActive="active">Configurar Motor</a></span>
+</ng-template>

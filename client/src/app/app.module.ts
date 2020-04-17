@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { EngineComponent } from './engine/engine.component';
 import { NewInputComponent } from './engine/new-input/new-input.component';
+import { StorageFunctions } from './utils/storage';
 
 import { NgSelectModule } from '@ng-select/ng-select';
 
@@ -23,7 +24,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     NgSelectModule,
     FormsModule
   ],
-  providers: [],
+  providers: [StorageFunctions],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

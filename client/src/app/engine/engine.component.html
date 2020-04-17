@@ -1,6 +1,9 @@
+<h1 class="title">Gerenciador de Motor</h1>
+
 <div *ngIf="!addNewInput">
     <button class="btn btn-primary" (click)="setDefaultEngine()">Motor Padrão</button>
-    <button class="btn btn-primary" (click)="addInput()">Adicionar</button>
+    <button class="btn btn-primary" (click)="addInput()">Adicionar Campo</button>
+    <button class="btn btn-primary" (click)="saveEngine()">Salvar Motor</button>
 
     <br />
 
@@ -10,14 +13,18 @@
         <thead>
             <th>Nome</th>
             <th>Tipo</th>
+            <th></th>
         </thead>
         <tbody>
-            <tr *ngFor="let item of engine">
+            <tr *ngFor="let item of engine;let indexItem=index;">
                 <td>
                     {{item.name}}
                 </td>
                 <td>
                     {{item.type}}
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteInput(indexItem)">Remover</button>
                 </td>
             </tr>
         </tbody>
