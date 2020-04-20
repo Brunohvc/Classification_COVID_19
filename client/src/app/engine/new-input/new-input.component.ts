@@ -24,6 +24,8 @@ export class NewInputComponent implements OnInit {
   conditionValueMin = null;
   conditionValueMax = null;
   numericConditions = [];
+  checkedValues = [];
+  unCheckedValues = [];
 
   inputTypes: any =
     [
@@ -50,9 +52,7 @@ export class NewInputComponent implements OnInit {
     ];
 
   ngOnInit(): void {
-  }
-
-  changeValue($event) {
+    this.sortCheckValues();
   }
 
   setInput() {
@@ -77,28 +77,22 @@ export class NewInputComponent implements OnInit {
     this.cancel.emit();
   }
 
-  get checkedValues() {
-    const list = [];
+  sortCheckValues() {
+    this.checkedValues = [];
+    this.unCheckedValues = [];
 
     this.riskTypes.forEach(element => {
       if (element.id !== this.unCheckedValue) {
-        list.push(element);
+        this.checkedValues.push(element);
       }
     });
-
-    return list;
-  }
-
-  get unCheckedValues() {
-    const list = [];
 
     this.riskTypes.forEach(element => {
       if (element.id !== this.checkedValue) {
-        list.push(element);
+        this.unCheckedValues.push(element);
       }
     });
 
-    return list;
   }
 
   addCondition() {

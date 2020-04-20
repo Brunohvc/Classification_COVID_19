@@ -1,8 +1,7 @@
 <div class="row">
     <div class="form-group col-sm-4">
         <label>Tipo</label>
-        <ng-select [items]="inputTypes" bindLabel="name" bindValue="id" [(ngModel)]="selectedType"
-            (change)="changeValue($event)">
+        <ng-select [items]="inputTypes" bindLabel="name" bindValue="id" [(ngModel)]="selectedType">
         </ng-select>
     </div>
 
@@ -38,15 +37,13 @@
 
     <div class="form-group col-sm-3" *ngIf="addingCondition">
         <label>Tipo Risco</label>
-        <ng-select [items]="riskTypes" bindLabel="name" bindValue="id" [(ngModel)]="riskTypeSelected"
-            (change)="changeValue($event)">
+        <ng-select [items]="riskTypes" bindLabel="name" bindValue="id" [(ngModel)]="riskTypeSelected">
         </ng-select>
     </div>
 
     <div class="form-group col-sm-3" *ngIf="addingCondition">
         <label>Condição</label>
-        <ng-select [items]="conditionTypes" bindLabel="name" bindValue="id" [(ngModel)]="conditionTypeSelected"
-            (change)="changeValue($event)">
+        <ng-select [items]="conditionTypes" bindLabel="name" bindValue="id" [(ngModel)]="conditionTypeSelected">
         </ng-select>
     </div>
 
@@ -76,13 +73,13 @@
     <div class="form-group col-sm-4">
         <label>Marcado</label>
         <ng-select [items]="checkedValues" bindLabel="name" bindValue="id" [(ngModel)]="checkedValue"
-            (change)="changeValue($event)">
+            (change)="sortCheckValues()">
         </ng-select>
     </div>
     <div class="form-group col-sm-4">
         <label>Desmarcado</label>
         <ng-select [items]="unCheckedValues" bindLabel="name" bindValue="id" [(ngModel)]="unCheckedValue"
-            (change)="changeValue($event)">
+            (change)="sortCheckValues()">
         </ng-select>
     </div>
 </div>
