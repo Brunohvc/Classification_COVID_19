@@ -1,4 +1,6 @@
 # Classification_COVID_19
+Alunos: Bruno Henrique e Felipe Pedreli</br>
+Sistema de classificação de risco/conduta para pacientes COVID19.
 
 ```bash
 1. Abrir cmd
