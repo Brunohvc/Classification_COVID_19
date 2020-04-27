@@ -1,4 +1,4 @@
-<h1 class="title">Home</h1>
+<h1 style="margin-top: 20px;" class="title">Home</h1>
 
 <div *ngIf="engine && engine.length > 0; else elseBlock">
     <br />
@@ -6,11 +6,11 @@
         Sua pontuação Ficou em: {{score}}
         <span class="message"
             [ngClass]="getClassTextPerScore(score)">{{getTextPerScore(score)}}</span></h3>
-    <div class="row">
+    <div style="margin-bottom: 40px; margin-top: 40px;" class="row">
         <div class="form-group col-sm-3" *ngFor="let item of engineInputs;let indexItem=index;">
 
             <label>{{item.name}}</label>
-            <input *ngIf="item.type == 'numeric';" type="number" class="form-control" placeholder="{{item.name}}"
+            <input style="margin-bottom: 20px;" *ngIf="item.type == 'numeric';" type="number" class="form-control" placeholder="{{item.name}}"
                 [(ngModel)]="engine[item.engineIndex].value" (change)="calcPoints()" (keyup)="calcPoints()">
 
 
@@ -19,12 +19,12 @@
 
         </div>
     </div>
-    <h4>Comorbidades</h4>
-    <div class="row">
+    <h4 >Comorbidades</h4>
+    <div style="margin-top: 40px;" class="row">
         <div class="form-check col-sm-3" *ngFor="let item of engineComorbidities;let indexItem=index;">
             <input type="checkbox" class="form-check-input" [(ngModel)]="engine[item.engineIndex].value"
                 (change)="calcPoints()">
-            <label class="form-check-label">{{item.name}}</label>
+            <label style="margin-bottom: 20px;" class="form-check-label">{{item.name}}</label>
         </div>
     </div>
 </div>
