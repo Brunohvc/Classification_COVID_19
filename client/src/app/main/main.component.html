@@ -3,7 +3,7 @@
 <div *ngIf="engine && engine.length > 0; else elseBlock">
     <br />
     <h3>
-        Sua pontuação Ficou em: {{score}}
+        Sua pontuação: {{score}}
         <span class="message"
             [ngClass]="getClassTextPerScore(score)">{{getTextPerScore(score)}}</span></h3>
     <div style="margin-bottom: 40px; margin-top: 40px;" class="row">
