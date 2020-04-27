@@ -2,7 +2,7 @@
 
 <div *ngIf="engine && engine.length > 0; else elseBlock">
     <br />
-    <h3>
+    <h3 style="font-weight: bold;">
         Sua pontuação: {{score}}
         <span class="message"
             [ngClass]="getClassTextPerScore(score)">{{getTextPerScore(score)}}</span></h3>
